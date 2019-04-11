@@ -101,10 +101,11 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 // Step 3:
 // Import data from the donuts.csv file
 // =================================
-d3.csv("data.csv", function (error, Data) {
-    if (error) throw error;
+d3.csv("data.csv", function (error, theData) {
+   if (error) throw error;
 
-    console.log(theData);
+  //d3.csv("data.csv").then(function(theData) {
+        console.log(theData);
 //assign and execute the data from CSV file
 
 // parse data
@@ -127,7 +128,7 @@ d3.csv("data.csv", function (error, Data) {
   var leftAxis = d3.axisLeft(yLinearScale);
 
   // append x axis
-  var xAxis = chart.Group.append("g")
+  var xAxis = chartGroup.append("g")
     .classed("x-axis", true)
     .attr("transform", `translate(0, ${ height })`)
     .call(bottomAxis);
@@ -144,7 +145,7 @@ d3.csv("data.csv", function (error, Data) {
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
     .attr("cy", d => yLinearScale(d.smokes))
     .attr("r", 20)
-    .attr("fill", "pink")
+    .attr("fill", "blue")
     .attr("opacity", ".5");
 
   // Create group for  2 x- axis labels
